@@ -90,7 +90,7 @@ jobs:
             Deo.Frontend.Tests/packages.lock.json
       - name: Set up .NET Tools
         run: |
-          dotnet tool install --tool-path "${DOTNET_TOOLS_INSTALL_DIR}" dotnet-sonar-scanner
+          dotnet tool install --tool-path "${DOTNET_TOOLS_INSTALL_DIR}" dotnet-sonarscanner
           dotnet tool install --tool-path "${DOTNET_TOOLS_INSTALL_DIR}" dotnet-coverage
       - name: Restore dependencies
         run: |
