@@ -101,7 +101,7 @@ jobs:
           ${DOTNET_TOOLS_INSTALL_DIR}/dotnet-sonarscanner begin \
             /k:"${{ secrets.SONAR_KEY }}" \
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
-            /d:sonar.host.url="{{ secrets.SONAR_HOST_URL }}" \
+            /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" \
             /d:sonar.cs.vscoveragexml.reportsPaths=*.coverage.xml
           ${DOTNET_TOOLS_INSTALL_DIR}/dotnet-coverage collect "dotnet test Deo.Backend.Tests" -f xml -o "backend.coverage.xml"
           ${DOTNET_TOOLS_INSTALL_DIR}/dotnet-coverage collect "dotnet test Deo.Frontend.Tests" -f xml -o "frontend.coverage.xml"
