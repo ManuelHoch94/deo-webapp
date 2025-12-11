@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
 
       - name: Log in to GitHub Container Registry
-        uses: docker/login-action
+        uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -36,7 +36,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.BACKEND_IMAGE_NAME }}
 
       - name: Build and push image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./Deo.Backend
           push: true
@@ -44,7 +44,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Generate artifact attestations
-        uses: docker/attestation-build-provenance
+        uses: docker/attestation-build-provenance@v1
         with:
           subject-name: ${{ env.REGISTRY }}/${{ env.BACKEND_IMAGE_NAME }}
           subject-digest: ${{ steps.push.outputs.digest }}
