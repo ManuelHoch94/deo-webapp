@@ -14,8 +14,6 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - name: Create Release
         env:
@@ -24,5 +22,5 @@ jobs:
         run: |
           gh release create $tag \
             --repo="$GITHUB_REPOSITORY" \
-            --title="$GITHUB_REPOSITORY#*/" ${tag} \
+            --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
             --generate-notes
